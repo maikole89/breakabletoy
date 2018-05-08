@@ -25,7 +25,7 @@ fetch(`/api/v1/events/${eventId}`)
 .then(body => {
   console.log(body)
   this.setState({
-    eventInfo: body.museum
+    eventInfo: body.event
   });
 
 })

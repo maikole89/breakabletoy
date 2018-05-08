@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe Api::V1::EventsController, type: :controller do
   before(:each) do
-    create(:event, name: "ICA", location: "Boston")
+    ica = create(:event, name: "ICA", location: "Boston")
     create_list(:event, 2)
     create(:event, name: "Boston Children's Museum", location: "Boston")
   end

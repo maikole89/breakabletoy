@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+ Rails.application.routes.draw do
   root "app#index"
   devise_for :users
   resources :events, only: [:index, :show]
