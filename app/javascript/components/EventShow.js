@@ -40,7 +40,6 @@ render() {
             <h1>{this.state.eventInfo.name}</h1><br/>
             <p>{this.state.eventInfo.location}</p><br/>
             <p>{this.state.eventInfo.description}</p><br/>
-            <p>{this.state.eventInfo.url}</p>
           </div>
       </div>
       )

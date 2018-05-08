@@ -22,6 +22,7 @@ class EventListContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
+        console.log(body)
         this.setState({ events: body.events });
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
