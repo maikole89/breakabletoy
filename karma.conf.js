@@ -31,6 +31,7 @@ module.exports = function(config) {
     webpack: {
       // generate sourcemaps
       devtool: 'eval-source-map',
+
       module: {
         loaders: [
           // use babel-loader to transpile the test and src folders
@@ -88,7 +89,10 @@ module.exports = function(config) {
       'react/addons': true,
       'react/lib/ExecutionEnvironment': true,
       'react/lib/ReactContext': true,
-      'react/addons': true
+      'react/addons': true,
+      'react/lib/ReactContext': true,
+      'react-test-renderer/shallow': true,
+      'react-dom/test-utils': true
     }
   })
 }
