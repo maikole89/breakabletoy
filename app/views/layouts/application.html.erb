@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>App</title>
+  <title>TEAM-CROWD</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
-  
+
     <%= javascript_include_tag "vendor/modernizr" %>
-  
+    <%= javascript_pack_tag    'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
+
   <nav class="top-bar">
     <ul class="title-area">
       <li class="name">
-        <h1><a href="/">App</a></h1>
+        <h1><a href="/">TEAM-CROWD</a></h1>
       </li>
     </ul>
 
     <section class="top-bar-section">
       <ul class="right">
         <%- if current_user -%>
+          <li> <%= link_to current_user.username, edit_user_registration_path %> </li>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
           <li><%= link_to 'Sign Up', new_user_registration_path %></li>

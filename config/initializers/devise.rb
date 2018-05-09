@@ -8,8 +8,8 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '3c4b5cdcd5fdaf9457da6e1bad1e3c3220ef5bc2538dbfb35394d2d0977c1ad45586942d54d6ffa60438d8f8fe9c8192d3a3eead6e9c5a677dcd6c00c19571d8'
-  
+  config.secret_key = '3c4b5cdcd5fdaf9457da6e1bad1e3c3220ef5bc2538dbfb35394d2d0977c1ad45586942d54d6ffa60438d8f8fe9c8192d3a3eead6e9c5a677dcd6c00c19571d8'
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -40,7 +40,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  # config.authentication_keys = [:email]
+  config.authentication_keys = [:username]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
