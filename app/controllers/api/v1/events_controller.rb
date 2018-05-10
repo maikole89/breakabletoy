@@ -10,8 +10,8 @@ class Api::V1::EventsController < ApiController
   end
 
   def create
-  @event = Event.new(event_params)
-  if @event.save!
+  @event = Event.new(event_params params[:name, :location, :description, :event_date, :event_time])
+  if @event.save
     render json: { event: event }
   else
     render json: { error: event.errors.full_messages }, status: :unprocessable_entity
