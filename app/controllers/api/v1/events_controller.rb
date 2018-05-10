@@ -8,4 +8,19 @@ class Api::V1::EventsController < ApiController
   def show
     render json: { events: Event.find(params[:id]) }
   end
+
+  def create
+  @event = Event.new(event_params)
+  if @event.save!
+    render json: { event: event }
+  else
+    render json: { error: event.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def event_params
+   params.require(:event).permit(:name)
+  end
 end

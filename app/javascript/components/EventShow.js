@@ -25,7 +25,7 @@ fetch(`/api/v1/events/${eventId}`)
 .then(body => {
   console.log(body)
   this.setState({
-    eventInfo: body.event
+    eventInfo: body.events
   });
 
 })
@@ -37,9 +37,11 @@ render() {
         <div>
           <div><h1>Details of Event:</h1></div>
           <div>
-            <h1>{this.state.eventInfo.name}</h1><br/>
-            <p>{this.state.eventInfo.location}</p><br/>
-            <p>{this.state.eventInfo.description}</p><br/>
+            <h3>{this.state.eventInfo.name}</h3>
+            <p>{this.state.eventInfo.location}</p>
+            <p>{this.state.eventInfo.description}</p>
+            <p>{this.state.eventInfo.url}</p>
+            <p>{this.state.eventInfo.event_date}</p>
           </div>
       </div>
       )

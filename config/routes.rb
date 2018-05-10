@@ -5,7 +5,7 @@
 
   namespace :api do
     namespace :v1 do
-      resources :events, only: [:index, :show]
+      resources :events, only: [:index, :show, :create]
     end
   end
 end

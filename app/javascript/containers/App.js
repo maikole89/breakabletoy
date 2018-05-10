@@ -1,7 +1,5 @@
 import React from 'react';
 import { Router, browserHistory, Route, IndexRoute } from 'react-router';
-
-
 import EventListContainer from './EventListContainer';
 import EventShow from '../components/EventShow';
 
@@ -16,5 +14,4 @@ const App = props => {
     </Router>
   )
 }
-
 export default App;
