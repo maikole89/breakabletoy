@@ -17,7 +17,12 @@ class EventListContainer extends Component {
     this.getEvents = this.getEvents.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.handleButtonClick = this.handleButtonClick.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    this.handleNameChange = this.handleNameChange.bind(this)
+    this.handleLocationChange = this.handleLocationChange.bind(this)
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
+    this.handleEventDateChange = this.handleEventDateChange.bind(this)
+    this.handleEventTimeChange = this.handleEventTimeChange.bind(this)
+    this.handleURLChange = this.handleURLChange.bind(this)
 }
 
 getEvents() {
@@ -44,16 +49,42 @@ getEvents() {
     this.getEvents()
   }
 
-  handleChange(event) {
+  handleNameChange(event) {
     this.setState( {
       name: event.target.value,
-      location: event.target.value,
-      description: event.target.value,
-      event_date: event.target.value,
-      event_time: event.target.value,
-      url: event.target.value
      })
   }
+
+  handleLocationChange(event) {
+    this.setState( {
+      location: event.target.value,
+     })
+  }
+
+  handleDescriptionChange(event) {
+    this.setState( {
+      description: event.target.value,
+     })
+  }
+
+  handleEventDateChange(event) {
+    this.setState( {
+      event_date: event.target.value,
+     })
+  }
+
+  handleEventTimeChange(event) {
+    this.setState( {
+      event_time: event.target.value,
+     })
+  }
+
+  handleURLChange(event) {
+    this.setState( {
+      url: event.target.value,
+     })
+  }
+
 
   componentDidMount() {
     this.getEvents();
@@ -100,9 +131,11 @@ getEvents() {
       return (
       <div>
         <Event
+          id={ event.id }
           key={ event.id }
           name={ event.name }
-          id={ event.id }
+          location= { event.location }
+          event_date= { event.event_date }
         />
       </div>
       );
@@ -111,35 +144,51 @@ getEvents() {
     return (
       <div id="event-list">
         <div id="genre-description">
+          <div className="panel small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center">
+            <h1>Welcome to TEAM-CROWD!</h1>
+            <h3>The World Needs Heroes</h3>
+            <p>Choose an event below or create your own!</p>
+          </div>
 
-          <h1 className="panel small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center">Events Near You</h1>
+          <p className="small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center">TEAM-CROWD offers Overwatch e-sports enthusiasts a home where they can find local venues hosting real-time professional matches</p><br/>
+          <h2 className="panel small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center">Events Near You</h2>
+          <p className="small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center">Browse events to join a viewing party for your favorite Overwatch League team!</p><br/>
         </div>
-        <div className="panel ">
+        <div className="panel small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center">
           <h2> Select an Upcoming Event</h2>
+          <article>
+            { eventComponents }
+          </article>
+        </div>
+        <div className="section1">
           <section>
-            <article>
-              { eventComponents }
-            </article>
+
           </section>
         </div>
-
-        <div className="panel">
-          <h3> Add a New Event </h3>
+        <div className="createanevent panel">
+          <h3 className="small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center"> Create a New Event </h3>
 
           <form onSubmit={this.handleFormSubmit}>
-            <label>Name:</label>
-            <input type="text" value={this.state.name} onChange={this.handleChange} />
-            <label>Location:</label>
-            <input type="text" value={this.state.location} onChange={this.handleChange} />
-            <label>Description:</label>
-            <input type="text" value={this.state.description} onChange={this.handleChange} />
+            <label>Name (Match):</label>
+            <input type="text" value={this.state.name} onChange={this.handleNameChange} />
+
+            <label>Location(City, State):</label>
+            <input type="text" value={this.state.location} onChange={this.handleLocationChange} />
+
+            <label>Description(Venue):</label>
+            <input type="text" value={this.state.description} onChange={this.handleDescriptionChange} />
+
             <label>Date of Event:</label>
-            <input type="text" value={this.state.event_date} onChange={this.handleChange} />
+            <input type="date" value={this.state.event_date} onChange={this.handleEventDateChange} />
+
             <label>Time of Event:</label>
-            <input type="text" value={this.state.event_time} onChange={this.handleChange} />
+            <input type="text" value={this.state.event_time} onChange={this.handleEventTimeChange} />
+
             <label>URL:</label>
-            <input type="text" value={this.state.url} onChange={this.handleChange} />
-            <input type="submit" value="Submit"/>
+            <input type="text" value={this.state.url} onChange={this.handleURLChange} />
+
+            <input className="button secondary" type="submit" value="Submit"/>
+
           </form>
         </div>
       </div>

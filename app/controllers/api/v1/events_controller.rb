@@ -10,17 +10,17 @@ class Api::V1::EventsController < ApiController
   end
 
   def create
-  @event = Event.new(event_params params[:name, :location, :description, :event_date, :event_time])
-  if @event.save
-    render json: { event: event }
+  @event = Event.new(event_params)
+  if @event.save!
+    render json: { event: @event }
   else
-    render json: { error: event.errors.full_messages }, status: :unprocessable_entity
+    render json: { error: @event.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
   private
 
   def event_params
-   params.require(:event).permit(:name)
+   params.require(:event).permit(:name, :location, :description, :event_date, :event_time)
   end
 end
