@@ -43,7 +43,8 @@ render() {
             <p>{this.state.eventInfo.url}</p>
             <p>{this.state.eventInfo.event_date}</p>
           </div>
-      </div>
+
+        </div>
       )
     }
 }
