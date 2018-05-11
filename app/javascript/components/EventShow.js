@@ -35,16 +35,16 @@ fetch(`/api/v1/events/${eventId}`)
 render() {
     return(
         <div>
-          <div><h1>Details of Event:</h1></div>
-          <div>
+          <div className=" panel small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center"><h1>Details of Event:</h1></div>
+          <div className="panel">
             <h3>{this.state.eventInfo.name}</h3>
-            <p>{this.state.eventInfo.description}</p>
             <p>{this.state.eventInfo.location}</p>
-            <p>{this.state.eventInfo.event_date}</p>
-            <p>{this.state.eventInfo.event_time}</p>
+            <p>{this.state.eventInfo.description}</p>
             <p>{this.state.eventInfo.url}</p>
+            <p>{this.state.eventInfo.event_date}</p>
           </div>
-      </div>
+
+        </div>
       )
     }
 }

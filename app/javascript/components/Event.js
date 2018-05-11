@@ -5,7 +5,7 @@ const Event = (props) => {
   return (
     <div>
       <li key={props.id}>
-        <Link to={`events/${props.id}`}>{ props.name }</Link>
+        <Link to={`events/${props.id}`}>{ props.name } { props.event_date}</Link>
       </li>
     </div>
   );

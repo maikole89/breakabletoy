@@ -10,15 +10,17 @@ class Api::V1::EventsController < ApiController
   end
 
   def create
-  data = JSON.parse(request.body.read)
-  new_event = Event.new(body: data["body"], time: date["date"], location: data["location"], event_id: data["event_id"])
-  post_user = current_user
-  new_event.user = post_user
-  if new_event.save
-    render json: new_event
+  @event = Event.new(event_params)
+  if @event.save!
+    render json: { event: @event }
   else
-    error = { id: "error message", body: "Please log in to create an Event"}
-    render json: error
+    render json: { error: @event.errors.full_messages }, status: :unprocessable_entity
+    end
   end
-end
+
+  private
+
+  def event_params
+   params.require(:event).permit(:name, :location, :description, :event_date, :event_time)
+  end
 end
