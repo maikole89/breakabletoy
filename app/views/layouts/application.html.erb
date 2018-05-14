@@ -25,8 +25,11 @@
     </ul>
 
     <section class="top-bar-section">
+
+
       <ul class="right">
-        <button class="scrollbutton" data-scroll="#createanevent">Create an Event</button>
+        <button class="scrollbutton" data-scroll="#teams">Teams</button>
+        <button class="scrollbutton" data-smooth-scroll="#createEvent">Create an Event</button>
 
         <%- if current_user -%>
           <li> <%= link_to current_user.username, edit_user_registration_path %> </li>

@@ -3,5 +3,5 @@ class Event < ApplicationRecord
   validates :location, presence: true, exclusion: { in: [nil] }
 
   has_many :rsvps
-  has_many :events, through: :rsvps
+  belongs_to :user
 end

@@ -52,3 +52,19 @@
   background: #ff8900;
   color: black;
 }
+
+.container {
+  width: 780px;
+  background-image: url(..assets/images/OWLbackground1.jpg) no-repeat center top;
+  margin: 0 auto;
+}
+
+.top-bar-section button, li{
+  font-family: 'Titillium Web', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.no-padding{
+  padding-left:0;
+  padding-right:0;
+}

@@ -85,7 +85,6 @@ getEvents() {
      })
   }
 
-
   componentDidMount() {
     this.getEvents();
   }
@@ -144,16 +143,28 @@ getEvents() {
     return (
       <div id="event-list">
         <div id="genre-description">
+
           <div className="panel small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center">
             <h1>Welcome to TEAM-CROWD!</h1>
             <h3>The World Needs Heroes</h3>
             <p>Choose an event below or create your own!</p>
           </div>
 
-          <p className="small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center">TEAM-CROWD offers Overwatch e-sports enthusiasts a home where they can find local venues hosting real-time professional matches</p><br/>
+          {/* <div className="container-fluid no-padding">
+            <div>
+              <div className="col-md-10">
+          <img src="https://pre00.deviantart.net/57c3/th/pre/f/2016/032/5/2/overwatch_wallpaper_hd_by_mrnocilla-d9q4d3z.jpg"/> */}
+          <container>
+            <p className="small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center">TEAM-CROWD offers Overwatch e-sports enthusiasts a home where they can find local venues hosting real-time professional matches</p><br/>
+          </container>
+          {/* </div>
+            </div>
+          </div> */}
+
           <h2 className="panel small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center">Events Near You</h2>
           <p className="small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center">Browse events to join a viewing party for your favorite Overwatch League team!</p><br/>
         </div>
+
         <div className="panel small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center">
           <h2> Select an Upcoming Event</h2>
           <article>

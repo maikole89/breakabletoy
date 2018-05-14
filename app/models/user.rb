@@ -11,7 +11,7 @@ end
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :events
-  has_many :rsvps
+  has_many :event_rsvps, through: :rsvp, source: :event, class_name: "Event"
 
   # mount_uploader :profile_photo, ProfilePhotoUploader
 end

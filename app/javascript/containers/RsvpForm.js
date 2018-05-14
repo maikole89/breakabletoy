@@ -1,12 +1,12 @@
 import React from 'react'
 import RsvpField from '../components/RsvpField'
-// import BodyField from '../components/BodyField'
+
 
 class RsvpForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      eventRsvp: '',
+      eventRsvp: "",
       errors: {}
     }
     this.handleRsvpInput = this.handleRsvpInput.bind(this)
@@ -60,13 +60,13 @@ class RsvpForm extends React.Component {
   }
 
     return(
-      <div>
-        <h2 className="add-rsvp">RSVP To This Event!</h2>
+      <div className=" panel small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center">
+        <h2 className="small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center">RSVP To This Event!</h2>
         {errorDiv}
         <form className="field small-8 columns" onSubmit={this.handleSubmit}>
           <RsvpField
             content={this.state.eventRsvp}
-            label="Museum Rating (1-5)"
+            label=""
             name="review-rating"
             handleInput={this.handleRsvpInput}
           />

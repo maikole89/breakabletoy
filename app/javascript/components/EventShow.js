@@ -1,12 +1,14 @@
 import React from 'react';
 import RsvpContainer from '../containers/RsvpContainer'
 import RsvpForm from '../containers/RsvpForm'
+import RsvpField from "../components/RsvpField"
 
 class EventShow extends React.Component {
   constructor(props){
       super(props)
       this.state = {
-        eventInfo: {}
+        eventInfo: {},
+        rsvps: []
       }
 }
 
