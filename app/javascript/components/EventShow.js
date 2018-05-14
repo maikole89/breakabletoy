@@ -1,4 +1,6 @@
 import React from 'react';
+import RsvpContainer from '../containers/RsvpContainer'
+import RsvpForm from '../containers/RsvpForm'
 
 class EventShow extends React.Component {
   constructor(props){
@@ -43,7 +45,15 @@ render() {
             <p>{this.state.eventInfo.url}</p>
             <p>{this.state.eventInfo.event_date}</p>
           </div>
-
+          <RsvpContainer
+            rsvps = {this.state.rsvps}
+            eventId = {this.state.eventInfo.id}
+          />
+          {/* {errorDiv} */}
+          <RsvpForm
+            eventId = {this.state.eventInfo.id}
+            addNewRsvp = {this.addNewRsvp}
+          />
         </div>
       )
     }

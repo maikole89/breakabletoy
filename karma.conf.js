@@ -40,7 +40,7 @@ module.exports = function(config) {
         'react/lib/ReactContext': true,
         'react-test-renderer/shallow': true,
         'react-dom/test-utils': true
-      },
+      }
       module: {
         loaders: [
           // use babel-loader to transpile the test and src folders
