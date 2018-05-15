@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_14_143804) do
+ActiveRecord::Schema.define(version: 2018_05_15_193852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "event_rsvps", force: :cascade do |t|
-    t.bigint "event_id"
-    t.bigint "rsvp_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_event_rsvps_on_event_id"
-    t.index ["rsvp_id"], name: "index_event_rsvps_on_rsvp_id"
-  end
 
   create_table "events", force: :cascade do |t|
     t.string "name", null: false
@@ -39,6 +30,8 @@ ActiveRecord::Schema.define(version: 2018_05_14_143804) do
     t.string "rsvp", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user_id", null: false
+    t.string "event_id", null: false
   end
 
   create_table "users", force: :cascade do |t|

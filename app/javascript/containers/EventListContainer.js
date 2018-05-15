@@ -104,7 +104,7 @@ getEvents() {
       credentials: 'same-origin',
       method: 'POST',
       body: JSON.stringify(formPayload),
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Accept': 'application/json, text/plain, */*','Content-Type': 'application/json' }
     })
     .then(response => {
       if (response.ok) {

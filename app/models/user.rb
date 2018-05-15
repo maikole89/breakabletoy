@@ -10,8 +10,8 @@ end
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :events
-  has_many :event_rsvps, through: :rsvp, source: :event, class_name: "Event"
+  has_many :rsvps
+  has_many :events, through: :rsvps
 
   # mount_uploader :profile_photo, ProfilePhotoUploader
 end

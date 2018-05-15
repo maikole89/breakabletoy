@@ -1,5 +1,5 @@
 import React from 'react';
-import RsvpContainer from '../containers/RsvpContainer'
+// import RsvpContainer from '../containers/RsvpContainer'
 import RsvpForm from '../containers/RsvpForm'
 import RsvpField from "../components/RsvpField"
 
@@ -40,25 +40,27 @@ render() {
     return(
         <div>
           <div className=" panel small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center"><h1>Details of Event:</h1></div>
-          <div className="panel">
+          <div className="panel small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center">
             <h3>{this.state.eventInfo.name}</h3>
             <p>{this.state.eventInfo.location}</p>
             <p>{this.state.eventInfo.description}</p>
             <p>{this.state.eventInfo.url}</p>
             <p>{this.state.eventInfo.event_date}</p>
           </div>
-          <RsvpContainer
-            rsvps = {this.state.rsvps}
-            eventId = {this.state.eventInfo.id}
-          />
-          {/* {errorDiv} */}
+
           <RsvpForm
             eventId = {this.state.eventInfo.id}
             addNewRsvp = {this.addNewRsvp}
           />
+
         </div>
       )
     }
 }
 
 export default EventShow;
+
+{/* <RsvpContainer
+  rsvps = {this.state.rsvps}
+  eventId = {this.state.eventInfo.id}
+/> */}

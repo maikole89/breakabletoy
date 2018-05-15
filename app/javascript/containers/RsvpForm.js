@@ -7,12 +7,14 @@ class RsvpForm extends React.Component {
     super(props)
     this.state = {
       eventRsvp: "",
+      RsvpMessage: "",
+      rsvpTotal: this.props.rsvp_total,
       errors: {}
     }
     this.handleRsvpInput = this.handleRsvpInput.bind(this)
-    this.validateEventRsvp = this.validateEventRsvp.bind(this)
     this.clearFields = this.clearFields.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.addRsvp = this.addRsvp.bind(this)
+    this.handlePlusOneRsvp = this.handlePlusOneRsvp.bind(this)
   }
 
   handleRsvpInput(event) {
@@ -24,29 +26,40 @@ class RsvpForm extends React.Component {
     this.setState({ eventRsvp: 'yes' })
   }
 
-  validateEventRsvp(selection) {
-    if (selection.trim() === '') {
-      let newError = { eventRsvp: 'Please enter a rating.' }
-      this.setState({ errors: Object.assign(this.state.errors, newError) })
-      return false
-    } else {
-      let errorState = this.state.errors
-      delete errorState.eventRsvp
-      this.setState({ errors: errorState })
-      return true
+    addRsvp(RsvpResult) {
+      fetch('/api/v1/rsvps.json', {
+        credentials: 'same-origin',
+        method: 'post',
+        body: JSON.stringify(RsvpResult),
+        headers: {'Accept': 'application/json','Content-Type': 'application/json'}
+      })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`, error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(responseMessage => {
+        debugger;
+        this.setState({
+          RsvpMessage: responseMessage['body'],
+          rsvpTotal: responseMessage['rsvp_total']
+        })
+      })
     }
-  }
 
-  handleSubmit(event) {
+  handlePlusOneRsvp(event) {
     event.preventDefault()
-    if(this.validateEventRsvp(this.state.eventRsvp)) {
-      let formPayload = {
-        eventRsvp: this.state.eventRsvp,
-        event_id: this.props.eventId
-      }
-      this.props.addNewEvent(formPayload)
-    }
+  let RsvpResult = {
+    value: "1",
+    event: this.props.eventId
   }
+  this.addRsvp(RsvpResult)
+}
+
 
   render() {
     let errorDiv;
@@ -59,23 +72,26 @@ class RsvpForm extends React.Component {
     errorDiv = <div className="callout alert">{errorItems}</div>
   }
 
+  let messageDiv = <div><p className="callout alert">{this.state.RsvpMessage}</p></div>
+
     return(
       <div className=" panel small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center">
         <h2 className="small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center">RSVP To This Event!</h2>
         {errorDiv}
-        <form className="field small-8 columns" onSubmit={this.handleSubmit}>
+        <p>Rsvps: {this.state.rsvpTotal}</p>
+        <form className="field small-8 medium-8 columns" onSubmit={this.handlePlusOneRsvp}>
           <RsvpField
             content={this.state.eventRsvp}
             label=""
-            name="review-rating"
+            name="event-rsvp"
             handleInput={this.handleRsvpInput}
           />
-
-          <div className= "small-12 medium-8 columns">
+          <div>{messageDiv}</div>
+          <div className= "small-12 medium-8 columns medium-centered">
             <ul className="button-group">
               <input type="submit" className="button radius" value="Clear" onClick={this.clearFields}/>
               &nbsp;
-              <input type="submit" value="Rsvp to Event" className="button radius"/>
+              <input type="submit" value="Rsvp to Event" className="button radius" onClick={this.handleRsvpInput}/>
             </ul>
           </div>
         </form>

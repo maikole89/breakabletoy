@@ -3,6 +3,13 @@ class RsvpSerializer < ActiveModel::Serializer
   belongs_to :user
   belongs_to :event
 
+  def rsvp_total
+  total = 0
+  object.rsvps.each do |rsvp|
+    total += rsvp.value
+  end
+  return total
+end
 
   def user_name
   object.user.username

@@ -1,6 +1,7 @@
 class Api::V1::EventsController < ApiController
   protect_from_forgery unless: -> { request.format.json? }
 
+
   def index
     render json: { events: Event.all }
   end
@@ -21,6 +22,6 @@ class Api::V1::EventsController < ApiController
   private
 
   def event_params
-   params.require(:event).permit(:name, :location, :description, :event_date, :event_time)
+   params.require(:event).permit(:name, :location, :description, :event_date, :event_time, :url, :rsvps)
   end
 end

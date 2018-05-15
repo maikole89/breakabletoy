@@ -11,7 +11,9 @@ const RsvpContainer = (props) => {
         id = {rsvp.id}
         text = {rsvp.body}
         user = {rsvp.user_name}
-        eventId = {props.eventId}
+        eventId = {props.event_id}
+        rsvp_total = {rsvp.rsvp_total}
+        
       />
     )
   })
