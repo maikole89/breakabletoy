@@ -34,13 +34,13 @@ module.exports = function(config) {
       externals: {
         cheerio: 'window',
         'react/addons': true,
-        'react/lib/ExecutionEnvironment': true,
-        'react/lib/ReactContext': true,
         'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
         'react/lib/ReactContext': true,
         'react-test-renderer/shallow': true,
         'react-dom/test-utils': true
-      }
+      },
+
       module: {
         loaders: [
           // use babel-loader to transpile the test and src folders
