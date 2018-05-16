@@ -98,6 +98,7 @@ getEvents() {
       event_date: this.state.event_date,
       event_time: this.state.event_time,
       url: this.state.url,
+      user_id: this.props.params.id
     };
     console.log(formPayload)
     fetch('/api/v1/events', {

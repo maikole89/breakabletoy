@@ -7,10 +7,7 @@ class Api::V1::RsvpsController < ApiController
   end
 
   def create
-    # data = JSON.parse(request.event_rsvps.read)
     event_id = params[:event]
-    # error = { id: 'error message', body: ''}
-    # @new_rsvp = EventRsvp.new(event_rsvps: data["event_rsvps"], event_id: data["event_id"])
     @new_rsvp = Rsvp.new(user: current_user, event_id: event_id)
     if current_user.nil?
       error = "Please log in to leave an RSVP"
@@ -21,11 +18,6 @@ class Api::V1::RsvpsController < ApiController
         end
       end
     end
-    #
-    # if error[:event_rsvps] == ''
-    #   @new_rsvp.user = post_user
-    # end
-    # if @new_rsvp.valid?
     if @new_rsvp.save
       render json: @new_rsvp
     else

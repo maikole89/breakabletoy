@@ -7,10 +7,8 @@
   namespace :api do
     namespace :v1 do
       resources :events, only: [:index, :show, :create] do
-        resources :event_rsvps, only: [:index]
+        resources :rsvps, only: [:index, :create]
       end
-      resources :event_rsvps, only: [:create]
-      resources :rsvps, only: [:create, :index]
     end
   end
-end
+end 

@@ -27,7 +27,7 @@ class RsvpForm extends React.Component {
   }
 
     addRsvp(RsvpResult) {
-      fetch('/api/v1/rsvps', {
+      fetch('/api/v1/events/:event_id/rsvps', {
         credentials: 'same-origin',
         method: 'post',
         body: JSON.stringify(RsvpResult),

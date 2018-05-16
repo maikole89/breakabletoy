@@ -1,6 +1,6 @@
 class Api::V1::EventsController < ApiController
   protect_from_forgery unless: -> { request.format.json? }
-
+  skip_before_action :verify_authenticity_token
 
   def index
     render json: { events: Event.all }
@@ -12,6 +12,7 @@ class Api::V1::EventsController < ApiController
 
   def create
   @event = Event.new(event_params)
+  @event.user = current_user
   if @event.save!
     render json: { event: @event }
   else
@@ -22,6 +23,6 @@ class Api::V1::EventsController < ApiController
   private
 
   def event_params
-   params.require(:event).permit(:name, :location, :description, :event_date, :event_time, :url, :rsvps)
+   params.require(:event).permit(:name, :location, :description, :event_date, :event_time, :url, :user_id)
   end
 end
