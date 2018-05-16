@@ -8,6 +8,8 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.time :event_time
       t.string :url
       t.timestamps
+      
+      t.belongs_to :user
     end
   end
 end

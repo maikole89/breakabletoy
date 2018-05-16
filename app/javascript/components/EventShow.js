@@ -1,10 +1,13 @@
 import React from 'react';
+import RsvpForm from '../containers/RsvpForm'
+import RsvpField from "../components/RsvpField"
 
 class EventShow extends React.Component {
   constructor(props){
-      super(props)
+      super(props);
       this.state = {
-        eventInfo: {}
+        eventInfo: {},
+        rsvps: []
       }
 }
 
@@ -36,7 +39,7 @@ render() {
     return(
         <div>
           <div className=" panel small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center"><h1>Details of Event:</h1></div>
-          <div className="panel">
+          <div className="panel small-block-grid-2 medium-block-grid-4 large-block-grid-6 small-only-text-center">
             <h3>{this.state.eventInfo.name}</h3>
             <p>{this.state.eventInfo.location}</p>
             <p>{this.state.eventInfo.description}</p>
@@ -44,9 +47,19 @@ render() {
             <p>{this.state.eventInfo.event_date}</p>
           </div>
 
+          <RsvpForm
+            eventId = {this.state.eventInfo.id}
+            addNewRsvp = {this.addNewRsvp}
+          />
+
         </div>
       )
     }
 }
 
 export default EventShow;
+
+{/* <RsvpContainer
+  rsvps = {this.state.rsvps}
+  eventId = {this.state.eventInfo.id}
+/> */}

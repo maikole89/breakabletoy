@@ -64,7 +64,7 @@ class EventForm extends React.Component {
       let formPayload = {
         rating: this.state.eventRating,
         body: this.state.eventBody,
-        museum_id: this.props.museumId
+        event_id: this.props.eventId
       }
       this.props.addNewEvent(formPayload)
     }
