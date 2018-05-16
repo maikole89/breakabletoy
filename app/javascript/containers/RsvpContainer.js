@@ -4,7 +4,7 @@ import RsvpField from "../components/RsvpField"
 const RsvpContainer = (props) => {
 
   let rsvps = props.rsvps.map(rsvp => {
-    debugger;
+    
     return(
       <RsvpField
         key = {rsvp.id}
@@ -13,7 +13,7 @@ const RsvpContainer = (props) => {
         user = {rsvp.user_name}
         eventId = {props.event_id}
         rsvp_total = {rsvp.rsvp_total}
-        
+
       />
     )
   })
