@@ -4,7 +4,7 @@ import RsvpField from '../components/RsvpField'
 
 class RsvpForm extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       eventRsvp: "",
       RsvpMessage: "",
@@ -27,7 +27,7 @@ class RsvpForm extends React.Component {
   }
 
     addRsvp(RsvpResult) {
-      fetch('/api/v1/rsvps.json', {
+      fetch('/api/v1/rsvps', {
         credentials: 'same-origin',
         method: 'post',
         body: JSON.stringify(RsvpResult),
@@ -43,7 +43,6 @@ class RsvpForm extends React.Component {
       })
       .then(response => response.json())
       .then(responseMessage => {
-        debugger;
         this.setState({
           RsvpMessage: responseMessage['body'],
           rsvpTotal: responseMessage['rsvp_total']
