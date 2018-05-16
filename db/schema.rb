@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_07_204420) do
+ActiveRecord::Schema.define(version: 2018_05_16_143653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,24 @@ ActiveRecord::Schema.define(version: 2018_05_07_204420) do
     t.date "event_date", null: false
     t.time "event_time"
     t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "handle"
+    t.string "abbreviatedName", null: false
+    t.string "homeLocation", null: false
+    t.string "primaryColor"
+    t.string "secondaryColor"
+    t.string "accounts"
+    t.string "owl_id"
+    t.string "addressCountry"
+    t.string "logo"
+    t.string "icon"
+    t.string "secondaryPhoto"
+    t.string "players"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
