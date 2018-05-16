@@ -8,7 +8,7 @@ class RsvpForm extends React.Component {
     this.state = {
       eventRsvp: "",
       RsvpMessage: "",
-      rsvpTotal: this.props.rsvp_total,
+      rsvpTotal: 0,
       errors: {}
     }
     this.handleRsvpInput = this.handleRsvpInput.bind(this)
@@ -27,9 +27,12 @@ class RsvpForm extends React.Component {
   }
 
     addRsvp(RsvpResult) {
-      fetch('/api/v1/events/:event_id/rsvps', {
+      let event_id = RsvpResult.event
+      console.log(event_id)
+
+      fetch(`/api/v1/events/${event_id}/rsvps`, {
         credentials: 'same-origin',
-        method: 'post',
+        method: 'POST',
         body: JSON.stringify(RsvpResult),
         headers: {'Accept': 'application/json','Content-Type': 'application/json'}
       })
@@ -43,9 +46,9 @@ class RsvpForm extends React.Component {
       })
       .then(response => response.json())
       .then(responseMessage => {
+        debugger;
         this.setState({
-          RsvpMessage: responseMessage['body'],
-          rsvpTotal: responseMessage['rsvp_total']
+          rsvpTotal: responseMessage.rsvpTotal
         })
       })
     }

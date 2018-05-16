@@ -8,7 +8,7 @@ class Api::V1::RsvpsController < ApiController
 
   def create
     event_id = params[:event]
-    @new_rsvp = Rsvp.new(user: current_user, event_id: event_id)
+    @new_rsvp = Rsvp.new(user: current_user, event_id: event_id, rsvp: "test data")
     if current_user.nil?
       error = "Please log in to leave an RSVP"
     else
@@ -19,9 +19,16 @@ class Api::V1::RsvpsController < ApiController
       end
     end
     if @new_rsvp.save
-      render json: @new_rsvp
+      render json: { rsvpTotal: rsvp_total }
     else
+      error = { message: "There was an error persisting your RSVP" }
       render json: error
     end
   end
+end
+
+private
+
+def rsvp_total
+  Rsvp.all.length
 end

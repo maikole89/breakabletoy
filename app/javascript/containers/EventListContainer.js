@@ -26,7 +26,7 @@ class EventListContainer extends Component {
 }
 
 getEvents() {
-  fetch('/api/v1/events.json')
+  fetch("/api/v1/events.json")
   .then(response => {
     if (response.ok) {
       return response;
@@ -119,9 +119,8 @@ getEvents() {
     .then(response => response.json())
     .then(body => {
       console.log(body)
-      this.setState({ event: body.event.text,
-        newEvent: '' });
-      })
+      this.setState({ events: this.state.events.concat(body.event)});
+    })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
     }
 
