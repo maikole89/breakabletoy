@@ -16,9 +16,9 @@ class Admin::EventsController < AdminController
   end
 
   def create
-    @event = Event.new(genre_params)
+    @event = Event.new(event_params)
     if @event.save
-      redirect_to admin_genres_path, notice: "Your new event #{@event.name} was saved successfully."
+      redirect_to admin_events_path, notice: "Your new event #{@event.name} was saved successfully."
     else
       @errors = @event.errors.full_messages
       render :index
@@ -26,8 +26,8 @@ class Admin::EventsController < AdminController
   end
 
   def update
-    if @event.update(genre_params)
-      redirect_to admin_genres_path, notice: "#{@event.name} was successfully updated."
+    if @event.update(event_params)
+      redirect_to admin_events_path, notice: "#{@event.name} was successfully updated."
     else
       @errors = @event.errors.full_messages
       render :edit
