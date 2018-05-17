@@ -1,6 +1,6 @@
-class Admin::EventsController < AdminController
+class Admin::EventsController < ApplicationControler
   before_action :authenticate_user!
-  before_action :require_admin
+  before_action :authorize_admin
   before_action :set_event, only: [:edit, :update]
 
   def index
@@ -42,5 +42,18 @@ class Admin::EventsController < AdminController
 
   def event_params
     params.require(:event).permit(:name)
+  end
+
+  def authorize_user!
+      if !user_signed_in? || !current_user.admin?
+        raise ActionController::RoutingError.new("Not Found")
+      end
+    end
+
+  def authorize_admin
+    # check to see if current user has a role of admin otherwise, redirect them, and maybe show a flash message, or show a not found page
+    unless current_user.admin?
+      redirect_to root_path, notice: "Administrative priveleges required to access admin functionality."
+    end
   end
 end
