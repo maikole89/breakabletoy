@@ -46,7 +46,6 @@ class RsvpForm extends React.Component {
       })
       .then(response => response.json())
       .then(responseMessage => {
-        debugger;
         this.setState({
           rsvpTotal: responseMessage.rsvpTotal
         })
