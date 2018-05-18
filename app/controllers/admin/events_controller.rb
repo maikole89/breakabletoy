@@ -1,4 +1,4 @@
-class Admin::EventsController < ApplicationControler
+class Admin::EventsController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_admin
   before_action :set_event, only: [:edit, :update]
